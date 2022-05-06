@@ -39,7 +39,7 @@ USERS = {
         "user_first_name": "Elisha", 
         "user_last_name": "Ngoma",
         "user_name": "ElishaNgoma",
-        "user_email": "elisha_ngoma@yahoo.fr", 
+        "user_email": "a@yahoo.fr", 
         "user_password": "123",
         "user_profile_picture": "elisha.jpg",
         "user_signup_date": "October 2016",
