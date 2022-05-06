@@ -1,0 +1,39 @@
+<div class="w-1/4 h-screen">
+  <div class="w-1/5 fixed flex flex-col h-screen gap-4 py-4 pl-4">
+    
+    
+    <div class="h-auto bg-gray-100 rounded-lg">
+      <div class="px-2 pt-4 font-bold text-xl">
+        You might also like
+      </div>
+     
+        % for user in local_users:
+        <div id="{{user['user_id']}}" class="flex items-center gap-2 px-2 py-3 hover:bg-gray-200 cursor-pointer">
+          % if "user_profile_picture" in user:
+              <a href="/user-profile/{{user['user_id']}}">
+                <img 
+                    class="userProfile  w-12 h-12 rounded-full object-cover flex-none" 
+                    src="/static/images/user_profile_pictures/{{user['user_profile_picture']}}" 
+                    onError="this.onerror=null;this.src='/static/images/user_profile_pictures/default_profile_picture.png';" 
+                />
+              </a>
+            % end
+              <div class="flex-1 overflow-ellipsis">
+                  <p>{{user["user_first_name"]}}</p>
+                  <p class="font-thin">@{{user["user_name"]}}</p>
+              </div>
+              <div id="follow-btn">
+                <button  
+                    onclick="follow(`{{user['user_id']}}`)" 
+                    class="py-2 px-4 bg-white rounded-full follow-btn" 
+                    id="{{user['user_id']}}" 
+                    value="YES">
+                      Follow
+                </button>
+              </div>
+          </div>
+        % end
+      <a href="" class="self-end px-2 text-blue1 font-thin"></a>
+    </div>
+  </div>
+</div>

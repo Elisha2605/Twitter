@@ -1,0 +1,132 @@
+% if not is_fetch:
+  % include("templates/_index-header")
+% end
+
+    <div class="spa-modal-overlay">
+        <a href="/" class="spa-modal-close-layer" onclick="spa(this); return false"></a>
+        <main 
+            class="modal"
+            data-spa_modal
+            data-spa_url="/signup"
+            data-spa_title={{title}}
+        >
+
+          <section id="sign-error-msg">
+              <form action="/signup" method="POST" enctype="multipart/form-data">
+                  <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
+                      
+                        <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+                          <div class="return-btn">
+                                <a href="/" onclick="spa(this); return false">
+                                    <div class="pt-2 return-button">
+                                      <svg class="" xmlns="http://www.w3.org/2000/svg" width="19.198" height="15.551" viewBox="0 0 19.198 15.551">
+                                        <g id="Group_3" data-name="Group 3" transform="translate(-30.302 -35.145)">
+                                          <g id="Group_2" data-name="Group 2" transform="translate(31 34.695)">
+                                            <g id="Group_1" data-name="Group 1">
+                                              <path id="Path_1" data-name="Path 1" d="M10,0,0,7.157" transform="translate(0 1.148)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+                                              <line id="Line_2" data-name="Line 2" x1="10" y1="7" transform="translate(0 8.305)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+                                              <line id="Line_3" data-name="Line 3" x1="17" transform="translate(1 8.305)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="1"/>
+                                            </g>
+                                          </g>
+                                        </g>
+                                      </svg>
+                                    </div>
+                                  </a>
+                          </div>
+                          <!-- <a href="/" onclick="spa(this); return false" class=" absolute text-inherit text-2xl ml-80 text-black">✖</a> -->
+                          <div class="mx-auto max-w-md">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png" class="h-8 mx-auto" alt="" />
+                          
+                              <h2 class="p-4 text-4xl mx-4 font-bold">Create your account</h2>
+                              <section class="text-red-500">
+                                  % include('errors/_signup-error')
+                              </section>
+                              <div class="flex flex-col gap-6 mt-4"> 
+                              <div>
+                                  <input 
+                                      name="user_first_name" 
+                                      type="text" id="firstname" 
+                                      value="{{user_first_name or '' }}" 
+                                      class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" 
+                                      placeholder="First name" 
+                                      data-validate="str"
+                                      data-min="5" 
+                                      data-max="50"
+                                      />
+                              </div>
+                              <div>
+                                  <input 
+                                      name="user_last_name" 
+                                      type="text" 
+                                      id="lastname" 
+                                      value="{{user_last_name or '' }}" 
+                                      class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" 
+                                      placeholder="Last name" 
+                                      data-validate="str"
+                                      data-min="5" 
+                                      data-max="50"
+                                      />
+                              </div>
+                              <div>
+                                  <input 
+                                      name="user_email" 
+                                      type="email" 
+                                      id="email" 
+                                      value="{{user_email or '' }}" 
+                                      class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" 
+                                      placeholder="Email" 
+                                      data-validate="email"
+                                      />
+                              </div>
+                              <div>
+                                  <input 
+                                      name="user_password" 
+                                      type="text" 
+                                      id="password" 
+                                      class="w-full bg-gray-100 px-4 py-4 rounded-lg focus:outline-none" 
+                                      placeholder="Password" 
+                                      data-validate="str"
+                                      data-min="2" 
+                                      data-max="50"
+                                      />
+                              </div>
+                              <div class="-mt-4 text-xs">
+                                  <label class="text-blue1">Password (min 2 max 50 characters)</label><br><br>
+                                  <div class="flex justify-center">
+                                      <div class="mb-3 w-96">
+                                        <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Upload your profile picture</label>
+                                        <input name="user_profile_picture" class="form-control
+                                        block
+                                        w-full
+                                        px-2
+                                        py-1
+                                        text-sm
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileSm" type="file">
+                                      </div>
+                                    </div>
+                              </div>
+                              </div> 
+                              <div class="pb-4">
+                                  <button type="submit" class="h-12 w-full mt-2 bg-blue1 rounded-3xl px-4 py-2 text-log text-white tracking-wide font-semibold font-sans">Next</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </section>
+
+        </main>
+    </div>
+    
+% if not is_fetch:
+  % include("templates/_index-footer")
+% end
+
