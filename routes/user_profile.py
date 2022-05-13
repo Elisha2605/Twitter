@@ -41,8 +41,6 @@ def _(user_id):
         for key in data.TWEETS:
             if user_id in data.TWEETS[key]['user_id']:
                 tweet_count += 1
-        print('#'*100)
-        print(tweet_count)
 
         # user follower - count
         for key in data.USERS:
@@ -71,9 +69,42 @@ def _(user_id):
                     items=data.items,
 
                     local_users=users,
-                    jwt_user=jwt_user
+                    jwt_user=jwt_user,
+
                     )
                 
+    except jwt.exceptions.InvalidTokenError as ex:
+        print(ex)
+        response.delete_cookie("jwt_user")
+        return redirect("/login")
+
+    
+
+############## USER COVER IMAGE / GET - ID ##############
+@get('/user_cover_image_upload')
+@view('user-cover-image')
+def _():
+
+    try:
+        user_session_jwt = request.get_cookie("jwt_user")
+        if user_session_jwt not in data.SESSION:
+            return redirect("/login") 
+        
+        for session in data.SESSION:
+            if session == user_session_jwt:
+                jwt_user = jwt.decode(session, data.JWT_USER_SECRET, algorithms=["HS256"])
+        
+        user_id = jwt_user['jwt_user_id']
+
+        is_fetch = True if request.headers.get('From-Fetch') else False
+        page_title = "upload-cover"
+        return dict(
+            title=page_title,
+            is_fetch=is_fetch,
+
+            jwt_user=jwt_user,
+            user_id=user_id
+        )
     except jwt.exceptions.InvalidTokenError as ex:
         print(ex)
         response.delete_cookie("jwt_user")

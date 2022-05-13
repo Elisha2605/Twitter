@@ -23,13 +23,24 @@
                   <p class="font-thin">@{{user["user_name"]}}</p>
               </div>
               <div id="follow-btn">
-                <button  
-                    onclick="follow(`{{user['user_id']}}`)" 
-                    class="py-2 px-4 bg-white rounded-full follow-btn" 
-                    id="{{user['user_id']}}" 
-                    value="YES">
-                      Follow
-                </button>
+                % if user['user_id'] in jwt_user['jwt_user_following']:
+                  <button  
+                      onclick="follow(`{{user['user_id']}}`)" 
+                      class="py-2 px-4 bg-white rounded-full follow-btn" 
+                      id="{{user['user_id']}}" 
+                      value="YES">
+                        Unfollow
+                  </button>
+                % else:
+                  <button  
+                      onclick="follow(`{{user['user_id']}}`)" 
+                      class="py-2 px-4 bg-white rounded-full follow-btn" 
+                      id="{{user['user_id']}}" 
+                      value="YES">
+                        Follow
+                  </button>
+                % end
+                
               </div>
           </div>
         % end

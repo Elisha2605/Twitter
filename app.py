@@ -20,8 +20,7 @@ from routes import (
     user_account,
     user_profile,
     admin,
-    user_cover_image,
-    user_follow_page,
+    user_follow,
 )
 ########  APIs  #######
 from api.TWEETS import (

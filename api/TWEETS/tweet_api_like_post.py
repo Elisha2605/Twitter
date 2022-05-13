@@ -25,7 +25,8 @@ def _(tweet_id):
 
         likes_count = len(data.TWEETS[tweet_id]['tweet_likes'])
         
-        return json.dumps(dict(tweet_liked=data.TWEETS[tweet_id], likes_count=likes_count))
+        # response.content_type = 'application/json; charset=UTF-8'
+        return dict(tweet_liked=data.TWEETS[tweet_id], likes_count=likes_count)
         # return dict(message=message, likes_count=likes_count)
 
     except Exception as ex:

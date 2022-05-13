@@ -49,7 +49,6 @@ def _(user_id):
             isfollow = "Unfollow"
             response.content_type = 'application/json; charset=UTF-8'
             return json.dumps(dict(server_message=isfollow, jwt_user=jwt_user))
-               
 
     except Exception as ex:
         print(ex)

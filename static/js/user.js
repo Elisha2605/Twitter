@@ -1,3 +1,6 @@
+const button = document.querySelector("#follow-account");
+const getLocalStorage = localStorage.getItem("btnState")
+
 ////////// UPDATE USER IMAGE /////////
 async function userUploadCoverImage(user_id) {
     const form = event.target.form
@@ -30,10 +33,12 @@ async function userUploadCoverImage(user_id) {
     
 }
 
-
+const follow_id = []
 ////////// FOLLOW /////////
 async function follow(user_id) {
-    const followbtn = document.querySelectorAll('.follow-account')
+    const target = event.target
+    const followbtn = document.querySelectorAll(".follow-btn")
+    
     const connection = await fetch(`/api-user-follow/${user_id}`, {
         method : "POST",
     })
@@ -43,29 +48,21 @@ async function follow(user_id) {
     
     const res = await connection.json()
     const server_message = res.server_message
-    console.log(server_message);
+    const jwt_user_following = res.jwt_user.jwt_user_following
     window.location.reload()
 
-    followbtn.forEach((btn) => {
-        if (btn.id === user_id && btn.value == "YES") {
-            btn.value = "NO"
-            
-            console.log("following user: ", user_id);
-        } else if (btn.id === user_id && btn.value == "NO") {
-            btn.value = "YES"
-            
-            console.log("unfollowing user: ", user_id);
-        } 
+    if (jwt_user_following.includes(user_id)) {
+        target.innerHTML = "Unfollow"
+        console.log("yes");
+    } else {
+        target.innerHTML = "Follow"
+        console.log("no");
+    }
 
-    })
-     
+    localStorage.setItem("btnState", target.innerHTML)       
 }
 
+// document.querySelector("#follow-account").innerHTML = localStorage.getItem("btnState")
 
 
-/////// <div id="10b"></div>
 
-
-const element = document.querySelector("[id='10b']")
-
-element.remove()

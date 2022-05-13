@@ -1,3 +1,4 @@
+from pickle import FALSE, TRUE
 from bottle import get, view, request, response, redirect
 import data
 import json
@@ -22,9 +23,8 @@ def _(user_id):
         for key in reversed(list(data.TWEETS.keys())): 
             tweets.append(data.TWEETS[key])    
             tweet_id=data.TWEETS[key]
-        # profile_picture_login
 
-        # random users
+        # local users
         users = []
         for key in data.USERS:
             users_dict = data.USERS
@@ -32,6 +32,7 @@ def _(user_id):
         
         is_fetch = True if request.headers.get('From-Fetch') else False
         return dict(
+            jwt_user=jwt_user,
             title="Explore",
             is_fetch=is_fetch,
             tweet_id=tweet_id,
@@ -43,7 +44,10 @@ def _(user_id):
             items=data.items, 
 
             local_users=users,
-            jwt_user=jwt_user,
+            
+
+            follow="Follow",
+            unfollow="Unfollow"
         )
         
     except jwt.exceptions.InvalidTokenError as ex:

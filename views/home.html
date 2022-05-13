@@ -54,7 +54,25 @@
                 
                   <div class="flex gap-12 w-10 mt-4 text-lg">
                       <i class="fa-regular fa-comment ml-auto"></i>
-                        <i onclick="like(`{{tweet['tweet_id']}}`)" class="fa-regular fa-heart" id="{{tweet['tweet_id']}}"></i>
+                      % if jwt_user['jwt_user_id'] in tweet['tweet_likes']:
+                        <i 
+                            onclick="like(`{{tweet['tweet_id']}}`)" 
+                            class="fa-regular fa-heart text-red-500" 
+                            id="{{tweet['tweet_id']}}">
+                          <span>
+                            {{len(tweet['tweet_likes'])}}
+                          </span>
+                        </i>
+                      % else:
+                        <i 
+                            onclick="like(`{{tweet['tweet_id']}}`)" 
+                            class="fa-regular fa-heart" 
+                            id="{{tweet['tweet_id']}}">
+                          <span>
+                            {{len(tweet['tweet_likes'])}}
+                          </span>
+                        </i>
+                      % end
                       <i class="fa-solid fa-retweet"></i>
                       <i class="fa-solid fa-share-nodes"></i>
                   </div>

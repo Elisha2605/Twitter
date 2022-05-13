@@ -195,6 +195,8 @@ document.querySelector(".display-filename").innerText = file.value.split('\\').p
 
 /// test ///
 async function like(tweet_id) {
+  target = event.target
+  // console.log(target);
   const connect = await fetch(`/tweet-api-like/${tweet_id}`, {
     method: "POST"
   })
@@ -202,11 +204,13 @@ async function like(tweet_id) {
     console.log("Uuups, connexion failed");
   }
   const res = await connect.json()
-  console.log(res);
+  // console.log(res.likes_count);
+  target.innerHTML = res.likes_count
+  console.log(res.tweet_liked.tweet_likes);
+  target.style.color = "red"
+  if (res.tweet_liked.tweet_likes.length === 0){
+    target.style.color = "black"
+  }
   
-  // if (res) {
-  //   window.location.reload()
-  // }
-
 }
 

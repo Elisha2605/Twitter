@@ -6,7 +6,7 @@ import jwt
 
 ###### Get following user tweets / GET #########
 @get('/user-home-page/<user_id>')
-@view('user-follow-page')
+@view('user-follow')
 def _(user_id):
     try:
 
@@ -29,6 +29,7 @@ def _(user_id):
         for key in data.USERS:
             if jwt_user['jwt_user_id'] in data.USERS[key]['user_id']:
                 following_count = len(data.USERS[key]['user_following'])
+
 
         # user tweets
         user_tweets = []
@@ -54,7 +55,7 @@ def _(user_id):
                     
                     following_count=following_count,
                     local_users=local_users,
-                    jwt_user=jwt_user
+                    jwt_user=jwt_user,
                     )
 
     except jwt.exceptions.InvalidTokenError as ex:
