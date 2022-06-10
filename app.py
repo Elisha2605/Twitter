@@ -33,8 +33,7 @@ from api.TWEETS import (
 from api.USERS import (
     user_api_get,
     user_api_upload_cover_img,
-    user_api_follow_post,
-   
+    user_api_follow_post, 
 )
 
 @get('/test.js')

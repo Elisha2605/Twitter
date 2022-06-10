@@ -1,4 +1,4 @@
-from bottle import post, response, request
+from bottle import post, response, request, redirect
 import json
 import data
 import uuid
@@ -6,6 +6,7 @@ from datetime import datetime
 import os
 import imghdr
 import re
+import jwt
 
 
 ##############  TWEETS with and without image / POST  ################
@@ -13,6 +14,15 @@ import re
 def _(user_id):
 
     try:
+         # SESSSION
+        user_session_jwt = request.get_cookie("jwt_user")
+        if user_session_jwt not in data.SESSION:
+            return redirect("/login") 
+        
+        for session in data.SESSION:
+            if session == user_session_jwt:
+                jwt_user = jwt.decode(session, data.JWT_USER_SECRET, algorithms=["HS256"])
+
         tweet_id = str(uuid.uuid4())
         # Validate uuid
         if not re.match(data.REGEX_UUID4, tweet_id):
@@ -113,4 +123,4 @@ def _(user_id):
         response.status = 500
         return {'info': 'Upps... something went wrong'}
 
-    return json.dumps(dict(tweet=data.TWEETS[tweet_id]))
+    return json.dumps(dict(tweet=data.TWEETS[tweet_id], jwt_user=jwt_user))

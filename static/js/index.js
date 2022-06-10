@@ -51,6 +51,9 @@ async function createTweet(){
     
     const res = await connection.json();
     const tweet = res.tweet
+    const jwt_user = res.jwt_user
+
+    console.log(jwt_user.jwt_user_id);
 
     let tweet_post = `
       <div id="${tweet.tweet_id}" class="p-4 border-t border-slate-200">
@@ -70,17 +73,14 @@ async function createTweet(){
                   </p>                        
               </div>
             </span>
-
-
+      
             <div id="tweet-text" class="pt-2">
               ${tweet.tweet_text}
             </div>
 
-
             <div id="tweet-image">
               <img class="mt-2 w-full object-cover h-80 rounded-2xl tweetImg" src="/static/images/user_content_images/${tweet.tweet_image}">
             </div>
-            
             <div class="flex gap-12 w-10 mt-4 text-lg">
                 <i onclick="openEditForm('${tweet.tweet_id}')" id="edit-post" class="editBtn fa-solid fa-pen cursor-pointer" data-id=${tweet.tweet_id}></i>
                 <i onclick="deleteTweet('${tweet.tweet_id}')" class="fas fa-trash ml-auto cursor-pointer"></i>
@@ -193,7 +193,7 @@ document.querySelector(".display-filename").innerText = file.value.split('\\').p
 };
 
 
-/// test ///
+/// Like ///
 async function like(tweet_id) {
   target = event.target
   // console.log(target);
@@ -206,6 +206,8 @@ async function like(tweet_id) {
   const res = await connect.json()
   // console.log(res.likes_count);
   target.innerHTML = res.likes_count
+
+
   console.log(res.tweet_liked.tweet_likes);
   target.style.color = "red"
   if (res.tweet_liked.tweet_likes.length === 0){

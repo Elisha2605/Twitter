@@ -57,18 +57,18 @@
                       % if jwt_user['jwt_user_id'] in tweet['tweet_likes']:
                         <i 
                             onclick="like(`{{tweet['tweet_id']}}`)" 
-                            class="fa-regular fa-heart text-red-500" 
+                            class="fa-regular fa-heart text-red-500 flex items-center" 
                             id="{{tweet['tweet_id']}}">
-                          <span>
+                          <span class="ml-1 font-thin">
                             {{len(tweet['tweet_likes'])}}
                           </span>
                         </i>
                       % else:
                         <i 
                             onclick="like(`{{tweet['tweet_id']}}`)" 
-                            class="fa-regular fa-heart" 
+                            class="fa-regular fa-heart flex items-center" 
                             id="{{tweet['tweet_id']}}">
-                          <span>
+                          <span class="ml-1 font-thin">
                             {{len(tweet['tweet_likes'])}}
                           </span>
                         </i>
