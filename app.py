@@ -1,5 +1,6 @@
 from bottle import error, default_app, get, run, static_file, view
-
+from dotenv import load_dotenv
+load_dotenv()
 
 ########  AUTH  #######
 from Auth.GET import (

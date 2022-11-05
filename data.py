@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import os
 
 ######################## COOKIE ###############################
 SESSION = []
@@ -24,7 +24,7 @@ USERS = {
         "user_last_name": "Haidara",
         "user_name": "AichaHaidara",
         "user_email": "a@a.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "aicha.jpeg",
         "user_signup_date": "January 2014",
         "user_cover_image": "c25.jpg",
@@ -40,7 +40,7 @@ USERS = {
         "user_last_name": "Ngoma",
         "user_name": "ElishaNgoma",
         "user_email": "a@yahoo.fr", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "elisha.jpg",
         "user_signup_date": "October 2016",
         "user_cover_image": "c10.jpg",
@@ -54,7 +54,7 @@ USERS = {
         "user_last_name": "Wilson",
         "user_name": "KathyWilson",
         "user_email": "aa@a.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p15.jpg",
         "user_signup_date": "May 2013",
         "user_cover_image": "c27.jpg",
@@ -68,7 +68,7 @@ USERS = {
         "user_last_name": "Batts",
         "user_name": "JosephBatts",
         "user_email": "b@b.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p7.jpg",
         "user_signup_date": "February 2016",
         "user_cover_image": "c21.jpg",
@@ -82,7 +82,7 @@ USERS = {
         "user_last_name": "Pan",
         "user_name": "RobertPan",
         "user_email": "c@c.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p9.jpg",
         "user_signup_date": "November 2011",
         "user_cover_image": "c12.jpg",
@@ -96,7 +96,7 @@ USERS = {
         "user_last_name": "Mpalo",
         "user_name": "KimMpalo",
         "user_email": "d@d.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p1.jpg",
         "user_signup_date": "March 2012",
         "user_cover_image": "c14.jpg",
@@ -110,7 +110,7 @@ USERS = {
         "user_last_name": "Lan",
         "user_name": "JosephLan",
         "user_email": "e@e.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p2.jpg",
         "user_signup_date": "January 2014",
         "user_cover_image": "c20.jpg",
@@ -124,7 +124,7 @@ USERS = {
         "user_last_name": "Sané",
         "user_name": "MargaretSané",
         "user_email": "f@f.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p12.jpg",
         "user_signup_date": "April 2015",
         "user_cover_image": "c5.jpg",
@@ -138,7 +138,7 @@ USERS = {
         "user_last_name": "Komelo",
         "user_name": "LeaKomelo",
         "user_email": "g@g.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p18.jpg",
         "user_signup_date": "August 2019",
         "user_cover_image": "c8.jpg",
@@ -152,7 +152,7 @@ USERS = {
         "user_last_name": "Ross",
         "user_name": "AntonioRoss",
         "user_email": "h@h.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p20.jpg",
         "user_signup_date": "June 2016",
         "user_cover_image": "c26.jpg",
@@ -166,7 +166,7 @@ USERS = {
         "user_last_name": "Stokes",
         "user_name": "HannahStokes",
         "user_email": "i@i.com", 
-        "user_password": "123",
+        "user_password": os.environ.get("USER_PASSORD"),
         "user_profile_picture": "p14.jpg",
         "user_signup_date": "December 2021",
         "user_cover_image": "c6.jpg",
@@ -178,11 +178,14 @@ USERS = {
 
 
 ADMIN = {
-    "admin_id": "4e3c619b-1de5-45f5-8790-6871b8e67144",
-    "admin_name": "Elisha",
-    "admin_email": "admin@admin.com",
-    "admin_password": "111"
+    "admin_id": os.environ.get('ADMIN_ID'),
+    "admin_name": os.environ.get('ADMIN_NAME'),
+    "admin_email": os.environ.get('ADMIN_EMAIL'),
+    "admin_password": os.environ.get('ADMIN_PASSWORD')
 }
+
+
+
 
 ######################## TWEETS ###############################
 

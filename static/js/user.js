@@ -36,7 +36,7 @@ async function userUploadCoverImage(user_id) {
 const follow_id = []
 ////////// FOLLOW /////////
 async function follow(user_id) {
-    const target = event.target
+    const targeted_follower = event.target
     const followbtn = document.querySelectorAll(".follow-btn")
     
     const connection = await fetch(`/api-user-follow/${user_id}`, {
@@ -52,14 +52,14 @@ async function follow(user_id) {
     window.location.reload()
 
     if (jwt_user_following.includes(user_id)) {
-        target.innerHTML = "Unfollow"
+        targeted_follower.innerHTML = "Unfollow"
         console.log("yes");
     } else {
-        target.innerHTML = "Follow"
+        targeted_follower.innerHTML = "Follow"
         console.log("no");
     }
 
-    localStorage.setItem("btnState", target.innerHTML)       
+    localStorage.setItem("btnState", targeted_follower.innerHTML)       
 }
 
 // document.querySelector("#follow-account").innerHTML = localStorage.getItem("btnState")

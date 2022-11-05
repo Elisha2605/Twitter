@@ -1,4 +1,3 @@
-from pickle import FALSE, TRUE
 from bottle import get, view, request, response, redirect
 import data
 import json

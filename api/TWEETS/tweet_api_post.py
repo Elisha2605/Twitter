@@ -43,6 +43,7 @@ def _(user_id):
         if len(tweet_text) > data.TWEET_MAX_LEN:
             response.status = 400
             return {'info': f"tweet description must be maximum {data.TWEET_MAX_LEN}"}
+            
 
 ##################################################  IMAGE  ######################################################
 
